@@ -45,7 +45,7 @@ const page = () => {
   return (
     <div className="relative">
       <Header />
-      <div className="flex flex-col items-center justify-center  py-8">
+      <div className="flex flex-col items-start justify-start pt-8 px-2 lg:px-0 lg:max-w-[70%] xl:max-w-[65%] mx-auto">
         <h1 className="text-3xl font-semibold font-instrument_sans">
           Create Presentation{" "}
         </h1>

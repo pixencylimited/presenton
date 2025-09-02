@@ -273,9 +273,6 @@ const Help = () => {
           {/* Footer */}
           <div className="bg-gray-50 px-6 py-3 border-t border-gray-200 text-xs text-gray-500 text-center">
             Still need help?{" "}
-            <a href="/contact" className="text-emerald-600 hover:underline">
-              Contact Support
-            </a>
           </div>
         </div>
       </div>

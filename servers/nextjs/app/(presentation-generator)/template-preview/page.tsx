@@ -102,74 +102,9 @@ const LayoutPreview = () => {
           </div>
         </div>
 
-        {/* In Built Templates */}
-        <section className="h-full pt-16 flex justify-center items-center">
-          <div className="max-w-7xl mx-auto px-6 py-6 w-full">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">In Built Templates</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {inBuiltGroups.map((group) => {
-                const isCustom = group.groupName.toLowerCase().startsWith("custom-");
-                const meta = summaryMap[group.groupName];
-                const displayName = isCustom && meta?.name ? meta.name : group.groupName;
-                const displayDescription = isCustom && meta?.description ? meta.description : group.settings.description;
-                const layoutGroup = getFullDataByGroup(group.groupName);
-                return (
-                  <Card
-                    key={group.groupName}
-                    className="cursor-pointer hover:shadow-md transition-all duration-200 group"
-                    onClick={() => {
-                      trackEvent(MixpanelEvent.Navigation, { from: pathname, to: `/template-preview/${group.groupName}` });
-                      router.push(`/template-preview/${group.groupName}`)
-                    }}
-                  >
-                   
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-3">
-                        <h3 className="text-lg font-semibold text-gray-900 capitalize group-hover:text-blue-600 transition-colors">
-                          {displayName}
-                        </h3>
-                        <div className="flex items-center gap-2">
-                          <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
-                            {group.layouts.length}
-                          </span>
-                          <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-colors" />
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-4">
-                        {displayDescription}
-                      </p>
-                      <div className="grid grid-cols-2 gap-2 mb-3 ">
-        {layoutGroup &&
-          layoutGroup?.slice(0, 4).map((layout: any, index: number) => {
-            const {
-              component: LayoutComponent,
-              sampleData,
-              layoutId,
-              groupName,
-            } = layout;
-            return (
-              <div
-                key={`${groupName}-${index}`}
-                className=" relative border border-gray-200 cursor-pointer overflow-hidden aspect-video"
-              >
-                <div className="absolute cursor-pointer bg-transparent z-40 top-0 left-0 w-full h-full" />
-                <div className="transform scale-[0.2] flex justify-center items-center origin-top-left  w-[500%] h-[500%]">
-                  <LayoutComponent data={sampleData} />
-                </div>
-              </div>
-            );
-          })}
-      </div>
-                    </div>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
-        </section>
 
         {/* Custom Templates */}
-        <section className="h-full pt-8 pb-16 flex justify-center items-center">
+        <section className="h-full flex justify-center items-center">
           <div className="max-w-7xl mx-auto px-6 py-6 w-full">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold text-gray-900">Custom AI Templates</h2>
@@ -240,6 +175,73 @@ const LayoutPreview = () => {
             </div>
           </div>
         </section>
+
+        {/* In Built Templates */}
+        <section className="h-full flex justify-center items-center">
+          <div className="max-w-7xl mx-auto px-6 py-6 w-full">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">In Built Templates</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {inBuiltGroups.map((group) => {
+                const isCustom = group.groupName.toLowerCase().startsWith("custom-");
+                const meta = summaryMap[group.groupName];
+                const displayName = isCustom && meta?.name ? meta.name : group.groupName;
+                const displayDescription = isCustom && meta?.description ? meta.description : group.settings.description;
+                const layoutGroup = getFullDataByGroup(group.groupName);
+                return (
+                  <Card
+                    key={group.groupName}
+                    className="cursor-pointer hover:shadow-md transition-all duration-200 group"
+                    onClick={() => {
+                      trackEvent(MixpanelEvent.Navigation, { from: pathname, to: `/template-preview/${group.groupName}` });
+                      router.push(`/template-preview/${group.groupName}`)
+                    }}
+                  >
+
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-lg font-semibold text-gray-900 capitalize group-hover:text-blue-600 transition-colors">
+                          {displayName}
+                        </h3>
+                        <div className="flex items-center gap-2">
+                          <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
+                            {group.layouts.length}
+                          </span>
+                          <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-colors" />
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-4">
+                        {displayDescription}
+                      </p>
+                      <div className="grid grid-cols-2 gap-2 mb-3 ">
+                        {layoutGroup &&
+                          layoutGroup?.slice(0, 4).map((layout: any, index: number) => {
+                            const {
+                              component: LayoutComponent,
+                              sampleData,
+                              layoutId,
+                              groupName,
+                            } = layout;
+                            return (
+                              <div
+                                key={`${groupName}-${index}`}
+                                className=" relative border border-gray-200 cursor-pointer overflow-hidden aspect-video"
+                              >
+                                <div className="absolute cursor-pointer bg-transparent z-40 top-0 left-0 w-full h-full" />
+                                <div className="transform scale-[0.2] flex justify-center items-center origin-top-left  w-[500%] h-[500%]">
+                                  <LayoutComponent data={sampleData} />
+                                </div>
+                              </div>
+                            );
+                          })}
+                      </div>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
       </div>
     </div>
   );
