@@ -4,7 +4,7 @@ import {
   SquareArrowOutUpRight,
   Play,
   Loader2,
-  Redo2 ,
+  Redo2,
   Undo2,
   RefreshCcw,
 } from "lucide-react";
@@ -187,29 +187,29 @@ const Header = ({
   const MenuItems = ({ mobile }: { mobile: boolean }) => (
     <div className="flex flex-col lg:flex-row items-center gap-4">
       {/* undo redo */}
-      <button onClick={handleReGenerate} disabled={isStreaming || !presentationData} className="text-white  disabled:opacity-50" >
-      
+      <button onClick={handleReGenerate} disabled={isStreaming || !presentationData} className="text-black  disabled:opacity-50" >
+
         Re-Generate
       </button>
       <div className="flex items-center gap-2 ">
         <ToolTip content="Undo">
-        <button disabled={!canUndo} className="text-white disabled:opacity-50" onClick={() => {
-          onUndo();
-        }}>
+          <button disabled={!canUndo} className="text-black disabled:opacity-50" onClick={() => {
+            onUndo();
+          }}>
 
-          <Undo2 className="w-6 h-6 " />
-          
-        </button>
-          </ToolTip>
-          <ToolTip content="Redo">
+            <Undo2 className="w-6 h-6 text-black" />
 
-        <button disabled={!canRedo} className="text-white disabled:opacity-50" onClick={() => {
-          onRedo();
-        }}>
-          <Redo2 className="w-6 h-6 " />
-         
-        </button>
-          </ToolTip>
+          </button>
+        </ToolTip>
+        <ToolTip content="Redo">
+
+          <button disabled={!canRedo} className="text-black disabled:opacity-50" onClick={() => {
+            onRedo();
+          }}>
+            <Redo2 className="w-6 h-6 text-black" />
+
+          </button>
+        </ToolTip>
 
       </div>
 
@@ -221,9 +221,9 @@ const Header = ({
           router.push(to);
         }}
         variant="ghost"
-        className="border border-white font-bold text-white rounded-[32px] transition-all duration-300 group"
+        className="border border-black font-bold text-black rounded-[32px] transition-all duration-300 group"
       >
-        <Play className="w-4 h-4 mr-1 stroke-white group-hover:stroke-black" />
+        <Play className="w-4 h-4 mr-1 stroke-black group-hover:stroke-black" />
         Present
       </Button>
 
@@ -234,8 +234,8 @@ const Header = ({
       }} className="hidden lg:block relative ">
         <Popover open={open} onOpenChange={setOpen} >
           <PopoverTrigger asChild>
-            <Button className={`border py-5 text-[#a855f7] font-bold rounded-[32px] transition-all duration-500 hover:border hover:bg-[#a855f7] hover:text-white w-full ${mobile ? "" : "bg-white"}`}>
-              <SquareArrowOutUpRight className="w-4 h-4 mr-1" />
+            <Button className={`border py-5 text-[#a855f7] font-bold rounded-[32px] transition-all duration-500 hover:border hover:bg-[#a855f7] hover:text-black w-full ${mobile ? "" : "bg-white"}`}>
+              <SquareArrowOutUpRight className="w-4 h-4 mr-1 text-black" />
               Export
             </Button>
           </PopoverTrigger>
@@ -262,22 +262,22 @@ const Header = ({
       />
       <div
 
-        className="bg-[#a855f7] w-full shadow-lg sticky top-0 ">
+        className="bg-white w-full shadow-lg sticky top-0 ">
 
         <Announcement />
         <Wrapper className="flex items-center justify-between py-1">
           <Link href="/dashboard" className="min-w-[162px]">
             <img
-              className="h-12"
+              className="h-10"
               src="/logo-white.png"
-              alt="Presentation logo"
+              alt="logo"
             />
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-4 2xl:gap-6">
             {isStreaming && (
-              <Loader2 className="animate-spin text-white font-bold w-6 h-6" />
+              <Loader2 className="animate-spin text-black font-bold w-6 h-6" />
             )}
 
 
