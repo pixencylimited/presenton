@@ -119,8 +119,7 @@ export default function LLMProviderSelection({
 
   return (
     <div className="h-full flex flex-col mt-10">
-      {/* Provider Selection - Fixed Header */}
-      <div className="p-2 rounded-2xl border border-gray-200">
+      {/* <div className="p-2 rounded-2xl border border-gray-200">
         <Tabs
           value={llmConfig.LLM || "openai"}
           onValueChange={handleProviderChange}
@@ -136,15 +135,13 @@ export default function LLMProviderSelection({
         </Tabs>
       </div>
 
-
-      {/* Scrollable Content */}
       <div className="flex-1 overflow-y-auto p-6 pt-0 custom_scrollbar">
         <Tabs
           value={llmConfig.LLM || "openai"}
           onValueChange={handleProviderChange}
           className="w-full"
         >
-          {/* OpenAI Content */}
+
           <TabsContent value="openai" className="mt-6">
             <OpenAIConfig
               openaiApiKey={llmConfig.OPENAI_API_KEY || ""}
@@ -154,7 +151,7 @@ export default function LLMProviderSelection({
             />
           </TabsContent>
 
-          {/* Google Content */}
+
           <TabsContent value="google" className="mt-6">
             <GoogleConfig
               googleApiKey={llmConfig.GOOGLE_API_KEY || ""}
@@ -164,7 +161,7 @@ export default function LLMProviderSelection({
             />
           </TabsContent>
 
-          {/* Anthropic Content */}
+
           <TabsContent value="anthropic" className="mt-6">
             <AnthropicConfig
               anthropicApiKey={llmConfig.ANTHROPIC_API_KEY || ""}
@@ -175,7 +172,7 @@ export default function LLMProviderSelection({
             />
           </TabsContent>
 
-          {/* Ollama Content */}
+
           <TabsContent value="ollama" className="mt-6">
             <OllamaConfig
               ollamaModel={llmConfig.OLLAMA_MODEL || ""}
@@ -185,7 +182,7 @@ export default function LLMProviderSelection({
             />
           </TabsContent>
 
-          {/* Custom Content */}
+
           <TabsContent value="custom" className="mt-6">
             <CustomConfig
               customLlmUrl={llmConfig.CUSTOM_LLM_URL || ""}
@@ -198,7 +195,7 @@ export default function LLMProviderSelection({
           </TabsContent>
         </Tabs>
 
-        {/* Image Provider Selection */}
+
         <div className="my-8">
           <label className="block text-sm font-medium text-gray-700 mb-3">
             Select Image Provider
@@ -277,7 +274,7 @@ export default function LLMProviderSelection({
           </div>
         </div>
 
-        {/* Dynamic API Key Input for Image Provider */}
+
         {llmConfig.IMAGE_PROVIDER &&
           IMAGE_PROVIDERS[llmConfig.IMAGE_PROVIDER] &&
           (() => {
@@ -327,7 +324,7 @@ export default function LLMProviderSelection({
             );
           })()}
 
-        {/* Model Information */}
+
         <div className="mb-8 p-4 bg-blue-50 rounded-lg border border-blue-100">
           <div className="flex items-start gap-3">
             <Info className="w-5 h-5 text-blue-500 mt-0.5" />
@@ -359,7 +356,7 @@ export default function LLMProviderSelection({
           </div>
         </div>
 
-      </div>
+      </div> */}
     </div>
   );
 } 
