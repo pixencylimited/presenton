@@ -15,11 +15,18 @@ import { TABS, LayoutGroup } from "../types/index";
 import { useOutlineStreaming } from "../hooks/useOutlineStreaming";
 import { useOutlineManagement } from "../hooks/useOutlineManagement";
 import { usePresentationGeneration } from "../hooks/usePresentationGeneration";
+import { useSearchParams } from 'next/navigation';
 
 const OutlinePage: React.FC = () => {
-  const { presentation_id, outlines } = useSelector(
+  const searchParams = useSearchParams();
+  const urlPresentationId = searchParams.get('presentation');
+
+  const { presentation_id: storePresentationId, outlines } = useSelector(
     (state: RootState) => state.presentationGeneration
   );
+
+  // Prioritize URL parameter, then fall back to store
+  const presentation_id = urlPresentationId || storePresentationId;
 
   const [activeTab, setActiveTab] = useState<string>(TABS.OUTLINE);
   const [selectedLayoutGroup, setSelectedLayoutGroup] = useState<LayoutGroup | null>(null);
